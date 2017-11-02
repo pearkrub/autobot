@@ -13,6 +13,7 @@ $events = json_decode($content, true);
 if (!is_null($events['events'])) { 
     // Loop through each event 
     foreach ($events['events'] as $event) { 
+        error_log($event);
         // Line API send a lot of event type, we interested in message only. 
         if ($event['type'] == 'message') { 
             // Get replyToken 
