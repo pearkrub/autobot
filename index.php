@@ -61,9 +61,7 @@
                         $stickerId = 410;
                         
                         $textMessageBuilder = new StickerMessageBuilder($packageId, $stickerId); 
-                        
                         $response = $bot->replyMessage($replyToken, $textMessageBuilder); 
-                        error_log($response);
                         break;
 
                     case 'video': 
@@ -88,7 +86,12 @@
                         $respMessage = 'Hello, your audio ID is '. 
                         $messageID; 
                         break;
-                        case 'location': $address = $event['message']['address']; // Reply message $respMessage = 'Hello, your address is '. $address; break;
+
+                    case 'location': 
+                        $address = $event['message']['address']; // Reply message 
+                        $respMessage = 'Hello, your address is '. $address; 
+                        break;
+
                     default: 
                         $respMessage = 'Please send image only'; 
                         break;
