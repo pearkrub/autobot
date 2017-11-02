@@ -13,7 +13,6 @@ $events = json_decode($content, true);
 if (!is_null($events['events'])) { 
     // Loop through each event 
     foreach ($events['events'] as $event) { 
-        error_log($event);
         // Line API send a lot of event type, we interested in message only. 
         if ($event['type'] == 'message') { 
             // Get replyToken 
@@ -41,6 +40,8 @@ if (!is_null($events['events'])) {
                 case 'video': 
                     $messageID = $event['message']['id']; // Create video file on server. 
                     $fileID = $event['message']['id']; 
+                    $httpClient = new CurlHTTPClient($channel_token); 
+                    $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
                     $response = $bot->getMessageContent($fileID); 
                     $fileName = 'linebot.mp4'; 
                     $file = fopen($fileName, 'w'); 
