@@ -63,7 +63,7 @@
                         $textMessageBuilder = new StickerMessageBuilder($packageId, $stickerId); 
                         
                         $response = $bot->replyMessage($replyToken, $textMessageBuilder); 
-                        error_log(json_encode($response));
+                        error_log($response);
                         break;
 
                     case 'video': 
