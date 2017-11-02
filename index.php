@@ -30,6 +30,12 @@ if (!is_null($events['events'])) {
                     $messageID = $event['message']['id']; 
                     $respMessage = 'Hello, your image ID is '. $messageID; 
                     break; 
+                    
+                case 'sticker': 
+                    $messageID = $event['message']['packageId']; 
+                    // Reply message 
+                    $respMessage = 'Hello, your Sticker Package ID is '. $messageID; 
+                    break;
 
                 default: 
                     $respMessage = 'Please send image only'; 
