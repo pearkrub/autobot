@@ -6,6 +6,7 @@
     use \LINE\LINEBot\MessageBuilder\TextMessageBuilder; 
     use \LINE\LINEBot\MessageBuilder\ImageMessageBuilder;
     use \LINE\LINEBot\MessageBuilder\StickerMessageBuilder;
+    use \LINE\LINEBot\MessageBuilder\VideoMessageBuilder;
 
     $channel_token = 'OnTQMCBIsw6hEL6IxCU04LMTqy8jQTdI2TXZhK1xk9+3h4+ZDPb3fSaWsl/ZdNjmmiTzwC8T0SqhZu/vbxsMkAaeT0xj4zptjkkgNXI23CZFIUVi/xGwuVDd3RbztCT5HCn84Lsk5/QREA2p+xkROQdB04t89/1O/w1cDnyilFU='; 
     $channel_secret = '328217598dac9a7d3a70a173e319fbe6'; 
@@ -72,6 +73,13 @@
                         $file = fopen($fileName, 'w'); 
                         fwrite($file, $response->getRawBody()); // Reply message
                         $respMessage = 'Hello, your video ID is '. $messageID; 
+                        $originalContentUrl = 'https://www.select2web.com.com/the-fuji.mp4'; 
+                        $previewImageUrl = 'https://www.select2web.com.com/the-fuji.jpg'; 
+                        
+                        $httpClient = new CurlHTTPClient($channel_token); 
+                        $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret)); 
+                        $textMessageBuilder = new VideoMessageBuilder($originalContentUrl, $previewImageUrl); 
+                        $response = $bot->replyMessage($replyToken, $textMessageBuilder);
                         break;
 
                     case 'audio': 
