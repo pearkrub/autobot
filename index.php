@@ -57,8 +57,8 @@
                         $messageID = $event['message']['packageId']; 
                         // Reply message 
                         $respMessage = 'Hello, your Sticker Package ID is '. $messageID;
-                        $packageId = (int)$event['message']['packageId'];
-                        $stickerId = (int)$event['message']['stickerId'];
+                        $packageId = 2351;
+                        $stickerId = 78195;
                         error_log(json_encode($event));
                         $textMessageBuilder = new StickerMessageBuilder($packageId, $stickerId); 
                         $response = $bot->replyMessage($replyToken, $textMessageBuilder); 
