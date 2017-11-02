@@ -5,6 +5,7 @@
     use \LINE\LINEBot; 
     use \LINE\LINEBot\MessageBuilder\TextMessageBuilder; 
     use \LINE\LINEBot\MessageBuilder\ImageMessageBuilder;
+    use \LINE\LINEBot\MessageBuilder\StickerMessageBuilder;
 
     $channel_token = 'OnTQMCBIsw6hEL6IxCU04LMTqy8jQTdI2TXZhK1xk9+3h4+ZDPb3fSaWsl/ZdNjmmiTzwC8T0SqhZu/vbxsMkAaeT0xj4zptjkkgNXI23CZFIUVi/xGwuVDd3RbztCT5HCn84Lsk5/QREA2p+xkROQdB04t89/1O/w1cDnyilFU='; 
     $channel_secret = '328217598dac9a7d3a70a173e319fbe6'; 
@@ -55,7 +56,11 @@
                     case 'sticker': 
                         $messageID = $event['message']['packageId']; 
                         // Reply message 
-                        $respMessage = 'Hello, your Sticker Package ID is '. $messageID; 
+                        $respMessage = 'Hello, your Sticker Package ID is '. $messageID;
+                        $packageId = 1; 
+                        $stickerId = 410; 
+                        $textMessageBuilder = new StickerMessageBuilder($packageId, $stickerId); 
+                        $response = $bot->replyMessage($replyToken, $textMessageBuilder); 
                         break;
 
                     case 'video': 
