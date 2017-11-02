@@ -99,7 +99,7 @@
                     case 'location': 
                         $address = $event['message']['address']; // Reply message 
                         $respMessage = 'Hello, your address is '. $address; 
-                        $title = 'I am here'; 
+                        $title = 'ตำแหน่งที่ตั้ง'; 
                         $latitude = $event['message']['latitude']; 
                         $longitude = $event['message']['longitude'];
                         $textMessageBuilder = new LocationMessageBuilder($title, $address, $latitude, $longitude); 
