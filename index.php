@@ -131,6 +131,16 @@
                 $textMessageBuilder = new TextMessageBuilder($respMessage); 
                 $response = $bot->replyMessage($replyToken, $textMessageBuilder); 
             }
+            if ($event['type'] == 'join') { 
+                // Get replyToken 
+                $replyToken = $event['replyToken']; 
+                // Greeting 
+                $respMessage = 'Hi guys, I am Praibool.Robot. You can ask me everything.'; 
+                $httpClient = new CurlHTTPClient($channel_token); 
+                $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret)); 
+                $textMessageBuilder = new TextMessageBuilder($respMessage); 
+                $response = $bot->replyMessage($replyToken, $textMessageBuilder); 
+            }
         } 
     }
     echo 'OK';
