@@ -25,7 +25,18 @@ if (!is_null($events['events'])) {
                 
                 case 'text': 
                     // Reply message 
-                    $respMessage = 'Hello, your message is '. $event['message']['text']; 
+                    $ask = $event['message']['text']; 
+                    switch(strtolower($ask)) { 
+                        case 'm': 
+                            $respMessage = 'What sup man. Go away!'; 
+                            break; 
+                        case 'f': 
+                            $respMessage = 'Love you lady.'; 
+                            break; 
+                        default: 
+                            $respMessage = 'What is your sex? M or F'; 
+                            break;      
+                    }
                     
                     break; 
 
@@ -62,7 +73,7 @@ if (!is_null($events['events'])) {
                     $respMessage = 'Hello, your audio ID is '. 
                     $messageID; 
                     break;
-                    
+                    case 'location': $address = $event['message']['address']; // Reply message $respMessage = 'Hello, your address is '. $address; break;
                 default: 
                     $respMessage = 'Please send image only'; 
                     break;
