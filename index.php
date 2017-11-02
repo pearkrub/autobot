@@ -59,6 +59,7 @@
                         $respMessage = 'Hello, your Sticker Package ID is '. $messageID;
                         $packageId = (int)$event['message']['packageId'];
                         $stickerId = (int)$event['message']['stickerId'];
+                        error_log($event);
                         $textMessageBuilder = new StickerMessageBuilder($packageId, $stickerId); 
                         $response = $bot->replyMessage($replyToken, $textMessageBuilder); 
                         break;
