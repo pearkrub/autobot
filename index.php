@@ -106,13 +106,30 @@
                         $response = $bot->replyMessage($replyToken, $textMessageBuilder);
                         break;
 
+                    case 'file': 
+                        $messageID = $event['message']['id']; 
+                        $fileName = $event['message']['fileName']; // Reply message 
+                        $respMessage = 'Hello, your file ID is '. $messageID . ' and file name is '. $fileName; 
+                        break;
+                    
                     default: 
                         $respMessage = 'Please send image only'; 
                         break;
                 } 
                 $textMessageBuilder = new TextMessageBuilder($respMessage); 
                 $response = $bot->replyMessage($replyToken, $textMessageBuilder); 
-            } 
+            }
+
+            if ($event['type'] == 'follow') { 
+                // Get replyToken 
+                $replyToken = $event['replyToken']; 
+                // Greeting 
+                $respMessage = 'Thanks you. I try to be your best friend.'; 
+                $httpClient = new CurlHTTPClient($channel_token); 
+                $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret)); 
+                $textMessageBuilder = new TextMessageBuilder($respMessage); 
+                $response = $bot->replyMessage($replyToken, $textMessageBuilder); 
+            }
         } 
     }
     echo 'OK';
