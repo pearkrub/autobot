@@ -61,3 +61,9 @@ statusMessage : <?php echo $obj_profile['statusMessage'] ?><br>
 token : <?php echo $token ?><br>
 mid : <?php echo $obj_profile['mid'] ?>
 </div>
+
+<script>
+    window.opener.loginCallback("<?php echo $token ?>","<?php echo $obj_profile['displayName'] ?>","<?php echo $obj_profile['mid'] ?>","<?php echo $obj_profile['pictureUrl'] ?>","<?php echo $obj_profile['statusMessage'] ?>");
+    window.close();
+
+</script>
