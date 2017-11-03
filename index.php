@@ -165,6 +165,6 @@
     }
     echo 'OK';
 ?>
-<div class="line-it-button" data-lang="th" data-type="share-d" data-url="https://media.line.me/th/how_to_install" style="display: none;"></div>
+<div class="line-it-button" data-lang="th" data-type="share-d" data-url="https://praibool-autobot.herokuapp.com" style="display: none;"></div>
  <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
  <script type="text/javascript">LineIt.loadButton();</script>
