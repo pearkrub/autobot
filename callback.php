@@ -29,7 +29,6 @@ function getToken($code){
 
 function getProfile(){
     global $token;
-    var_dump($token);
     $curl = curl_init();
 
     curl_setopt_array($curl, array(
@@ -56,7 +55,7 @@ $obj_profile = json_decode(getProfile(),true);
 ?>
 
 <div id="result">
-<img src="<?php echo $obj_profile['pictureUrl'] ?>"><br>
+<img height="100px" width="80px" src="<?php echo $obj_profile['pictureUrl'] ?>"><br>
 Name : <?php echo $obj_profile['displayName'] ?><br>
 statusMessage : <?php echo $obj_profile['statusMessage'] ?><br>
 token : <?php echo $token ?><br>
