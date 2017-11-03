@@ -176,15 +176,5 @@
         win.window.focus();
     }
 
-    function loginCallback(token,displayName,mid,pictureUrl,statusMessage){
-        var _html = '';
-        _html += '<img src="'+pictureUrl+'"><br>';
-        _html += 'Name : '+displayName+'<br>';
-        _html += 'statusMessage : '+statusMessage+'<br>';
-        _html += 'token : '+token+'<br>';
-        _html += 'mid : '+mid+'<br>';
-
-        $("#result").html(_html);
-        $("#login_div").hide();
-    }
+    
 </script>
