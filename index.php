@@ -169,7 +169,7 @@
 </div>
 <script>
     function loginLine(){
-    var win = window.open("https://access.line.me/dialog/oauth/weblogin?response_type=code&client_id=1496511306&redirect_uri=https://praibool-autobot.herokuapp.com/callback.php&state=reftest001",'Popup','height=500,width=480');
+    var win = window.open("https://access.line.me/dialog/oauth/weblogin?response_type=code&client_id=1544093738&redirect_uri=https://praibool-autobot.herokuapp.com/callback.php&state=reftest001",'Popup','height=500,width=480');
     win.window.focus();
 }
 </script>
