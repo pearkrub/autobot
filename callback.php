@@ -54,6 +54,12 @@ $token = $obj['access_token'];
 $obj_profile = json_decode(getProfile(),true);
 
 ?>
+<script>
+
+    window.opener.loginCallback("<?php echo $token ?>","<?php echo $obj_profile['displayName'] ?>","<?php echo $obj_profile['mid'] ?>","<?php echo $obj_profile['pictureUrl'] ?>","<?php echo $obj_profile['statusMessage'] ?>");
+    window.close();
+
+</script>
 <pre>
 <?php var_dump($obj_profile) ?>
 </pre>

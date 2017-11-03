@@ -167,9 +167,24 @@
 <div>
     <a onclick="loginLine()"><img src="btn_login_base.png">Login Line</a>
 </div>
+
+<div id="result">
+</div>
 <script>
     function loginLine(){
-    var win = window.open("https://access.line.me/dialog/oauth/weblogin?response_type=code&client_id=1544093738&redirect_uri=https://praibool-autobot.herokuapp.com/callback.php&state=reftest001",'Popup','height=500,width=480');
-    win.window.focus();
-}
+        var win = window.open("https://access.line.me/dialog/oauth/weblogin?response_type=code&client_id=1544093738&redirect_uri=https://praibool-autobot.herokuapp.com/callback.php&state=reftest001",'Popup','height=500,width=480');
+        win.window.focus();
+    }
+
+    function loginCallback(token,displayName,mid,pictureUrl,statusMessage){
+        var _html = '';
+        _html += '<img src="'+pictureUrl+'"><br>';
+        _html += 'Name : '+displayName+'<br>';
+        _html += 'statusMessage : '+statusMessage+'<br>';
+        _html += 'token : '+token+'<br>';
+        _html += 'mid : '+mid+'<br>';
+
+        $("#result").html(_html);
+        $("#login_div").hide();
+    }
 </script>
