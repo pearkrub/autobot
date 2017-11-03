@@ -29,7 +29,7 @@ function getToken($code){
 
 function getProfile(){
     global $token;
-
+    var_dump($token);
     $curl = curl_init();
 
     curl_setopt_array($curl, array(
