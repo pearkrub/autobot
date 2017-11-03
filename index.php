@@ -27,7 +27,7 @@
                 $replyToken = $event['replyToken']; 
                 // Split message then keep it in database. 
                 $appointments = explode(',', $event['message']['text']); 
-                if(count($appointments) == 2) { 
+                try{
                     $host = 'ec2-174-129-224-33.compute-1.amazonaws.com'; 
                     $dbname = 'd3306tqdi77npn'; 
                     $user = 'yzmadrqtxhfoqh';
@@ -37,8 +37,8 @@
                     $statement = $connection->prepare("INSERT INTO appointments (time, content) VALUES (:time, :content)"); 
                     $result = $statement->execute($params); 
                     $respMessage = 'Your appointment has saved.'; 
-                }else{
-                    $respMessage = 'You can send appointment like this "12.00,House keeping." '; 
+                } catch(Exception $e) {
+                    error_log($e->getMessage()); 
                 }
                 $textMessageBuilder = new TextMessageBuilder($respMessage); 
                 $response = $bot->replyMessage($replyToken, $textMessageBuilder);
@@ -165,3 +165,6 @@
     }
     echo 'OK';
 ?>
+<div class="line-it-button" data-lang="th" data-type="share-d" data-url="https://media.line.me/th/how_to_install" style="display: none;"></div>
+ <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+ <script type="text/javascript">LineIt.loadButton();</script>
