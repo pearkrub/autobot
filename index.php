@@ -163,8 +163,13 @@
             }
         } 
     }
-    echo 'OK';
 ?>
-<div class="line-it-button" data-lang="th" data-type="share-d" data-url="https://praibool-autobot.herokuapp.com" style="display: none;"></div>
- <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
- <script type="text/javascript">LineIt.loadButton();</script>
+<div>
+    <a onclick="loginLine()"><img src="btn_login_base.png">Login Line</a>
+</div>
+<script>
+    function loginLine(){
+    var win = window.open("https://access.line.me/dialog/oauth/weblogin?response_type=code&client_id=1496511306&redirect_uri=https://praibool-autobot.herokuapp.com/callback.php&state=reftest001",'Popup','height=500,width=480');
+    win.window.focus();
+}
+</script>
