@@ -23,30 +23,30 @@
         // Loop through each event 
         foreach ($events['events'] as $event) { 
             // Line API send a lot of event type, we interested in message only. 
-            if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
-                $replyToken = $event['replyToken']; 
-                // Split message then keep it in database. 
-                $appointments = explode(',', $event['message']['text']); 
-                try{
-                    $host = 'ec2-174-129-224-33.compute-1.amazonaws.com'; 
-                    $dbname = 'd3306tqdi77npn'; 
-                    $user = 'yzmadrqtxhfoqh';
-                    $pass = 'e193b0d3401586d017c1f5541686cb6bd9019c986d09e4c1ef87e2558dae8713'; 
-                    $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass); 
-                    $params = array( 'time' => $appointments[0], 'content' => $appointments[1], ); 
-                    $statement = $connection->prepare("INSERT INTO appointments (time, content) VALUES (:time, :content)"); 
-                    $result = $statement->execute($params); 
-                    $respMessage = 'Your appointment has saved.'; 
-                } catch(Exception $e) {
-                    error_log($e->getMessage()); 
-                }
-                $textMessageBuilder = new TextMessageBuilder($respMessage); 
-                $response = $bot->replyMessage($replyToken, $textMessageBuilder);
-            }
+            // if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
+            //     $replyToken = $event['replyToken']; 
+            //     // Split message then keep it in database. 
+            //     $appointments = explode(',', $event['message']['text']); 
+            //     try{
+            //         $host = 'ec2-174-129-224-33.compute-1.amazonaws.com'; 
+            //         $dbname = 'd3306tqdi77npn'; 
+            //         $user = 'yzmadrqtxhfoqh';
+            //         $pass = 'e193b0d3401586d017c1f5541686cb6bd9019c986d09e4c1ef87e2558dae8713'; 
+            //         $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass); 
+            //         $params = array( 'time' => $appointments[0], 'content' => $appointments[1], ); 
+            //         $statement = $connection->prepare("INSERT INTO appointments (time, content) VALUES (:time, :content)"); 
+            //         $result = $statement->execute($params); 
+            //         $respMessage = 'Your appointment has saved.'; 
+            //     } catch(Exception $e) {
+            //         error_log($e->getMessage()); 
+            //     }
+            //     $textMessageBuilder = new TextMessageBuilder($respMessage); 
+            //     $response = $bot->replyMessage($replyToken, $textMessageBuilder);
+            // }
             if ($event['type'] == 'message') { 
                 // Get replyToken 
                 $replyToken = $event['replyToken']; 
-
+                $userId = $event['source']['userId'];
                 switch($event['message']['type']) { 
                     
                     case 'text': 
@@ -63,7 +63,8 @@
                                 $respMessage = 'What is your sex? M or F'; 
                                 break;      
                         }
-                        
+                        $textMessageBuilder = new ImageMessageBuilder($originalContentUrl, $previewImageUrl); 
+                        $response = $bot->pushMessage($userId, $textMessageBuilder);
                         break; 
 
                     case 'image':
