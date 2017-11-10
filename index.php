@@ -138,8 +138,8 @@
                         $respMessage = 'Please send image only'; 
                         break;
                 } 
-                $textMessageBuilder = new TextMessageBuilder($respMessage); 
-                $response = $bot->replyMessage($replyToken, $textMessageBuilder); 
+                // $textMessageBuilder = new TextMessageBuilder($respMessage); 
+                // $response = $bot->replyMessage($replyToken, $textMessageBuilder); 
             }
 
             if ($event['type'] == 'follow') { 
