@@ -63,7 +63,7 @@
                                 $respMessage = 'What is your sex? M or F'; 
                                 break;      
                         }
-                        $textMessageBuilder = new ImageMessageBuilder($originalContentUrl, $previewImageUrl); 
+                        $textMessageBuilder = new TextMessageBuilder($respMessage); 
                         $response = $bot->pushMessage($userId, $textMessageBuilder);
                         break; 
 
