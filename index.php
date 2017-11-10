@@ -19,7 +19,7 @@
     error_log(json_encode($_GET));
     $content = file_get_contents('php://input'); 
     $events = json_decode($content, true); 
-    error_log(json_encode($events));
+    error_log(json_encode($_GET, $events));
     if (!is_null($events['events'])) { 
         // Loop through each event 
         foreach ($events['events'] as $event) { 
