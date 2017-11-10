@@ -16,7 +16,7 @@
     $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
 
     // Get message from Line API 
-    error_log($_GET['uderId']);
+    error_log($_GET);
     $content = file_get_contents('php://input'); 
     $events = json_decode($content, true); 
     error_log(json_encode($events));
