@@ -49,7 +49,7 @@ function getProfile(){
 }
 
 $obj = json_decode(getToken($_GET['code']),true);
-$token = 'OnTQMCBIsw6hEL6IxCU04LMTqy8jQTdI2TXZhK1xk9+3h4+ZDPb3fSaWsl/ZdNjmmiTzwC8T0SqhZu/vbxsMkAaeT0xj4zptjkkgNXI23CZFIUVi/xGwuVDd3RbztCT5HCn84Lsk5/QREA2p+xkROQdB04t89/1O/w1cDnyilFU=';
+$token = $obj['access_token'];
 $obj_profile = json_decode(getProfile(),true);
 
 ?>
